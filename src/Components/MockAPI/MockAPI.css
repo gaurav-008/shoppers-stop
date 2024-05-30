@@ -1,0 +1,49 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  margin: 80px auto;
+  justify-content: center;
+  align-items: center;
+}
+figure {
+  display: grid;
+  border-radius: 1rem;
+  overflow: hidden;
+  cursor: pointer;
+  height: 300px;
+  width: 300px;
+
+  img {
+    height: 100%;
+  }
+}
+figure > * {
+  grid-area: 1/1;
+  transition: 0.4s;
+}
+figure figcaption {
+  display: grid;
+  align-items: end;
+  font-family: sans-serif;
+  font-size: 2.3rem;
+  font-weight: bold;
+  color: white;
+  padding: 0.75rem;
+  background: var(--c, #0009);
+  clip-path: inset(0 var(--_i, 100%) 0 0);
+
+  margin: -1px;
+}
+figure:hover figcaption {
+  --_i: 0%;
+}
+figure:hover img {
+  transform: scale(1.2);
+}
+@supports not (-webkit-mask-clip: text) {
+  figure figcaption {
+    -webkit-mask: none;
+    color: #fff;
+  }
+}

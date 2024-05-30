@@ -1,0 +1,128 @@
+.hero {
+  height: 100vh;
+  display: flex;
+}
+.hero-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  padding-left: 160px;
+  line-height: 1.1;
+}
+.hero-left h2 {
+  color: white;
+  font-size: 26px;
+  font-weight: 400;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.45);
+}
+.hero-left p {
+  color: white;
+  font-size: 80px;
+  font-weight: 400;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.45);
+}
+.hand-icon {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.hand-icon img {
+  width: 105px;
+}
+.hero-latest-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  width: 310px;
+  height: 70px;
+  border-radius: 75px;
+  margin-top: 30px;
+  background: #ff4141;
+}
+.hero-video {
+  pointer-events: none;
+}
+video {
+  position: absolute;
+  left: 0;
+  /* top: 0; */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+.hero-unmute-button {
+  position: fixed;
+  bottom: 20px; 
+  right: 20px; 
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 999;
+}
+.hero-latest-button p {
+  font-size: 22px;
+  color: white;
+}
+.hero-right {
+  display: flex;
+  flex: 1;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+@media screen and (max-width: 1200px) {
+  .hero-left {
+    padding-left: 80px;
+  }
+  .hero-right img {
+    width: 100%;
+  }
+  .hero-left h2 {
+    font-size: 20px;
+  }
+  .hero-left p {
+    font-size: 60px;
+  }
+  .hero-latest-button p {
+    font-size: 20px;
+  }
+  .hand-icon {
+    gap: 20px;
+  }
+  .hand-icon img {
+    width: 60px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .hero-left {
+    padding: 0 16px 80px 16px;
+  }
+  .hero-left h2 {
+    font-size: 16px;
+  }
+  .hero-left p {
+    font-size: 40px;
+  }
+  .hero-latest-button p {
+    font-size: 16px;
+  }
+  .hand-icon {
+    gap: 16px;
+  }
+  .hand-icon img {
+    width: 44px;
+  }
+  .hero {
+    flex-direction: column-reverse;
+    height: auto;
+  }
+  .hero-latest-button {
+    width: auto;
+  }
+}
