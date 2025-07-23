@@ -1,6 +1,6 @@
 // Navbar.js
 
-import React, { useContext, useState, useEffect } from "react";
+import React, { useState, useRef, useEffect, useContext } from "react";
 import "./Navbar.css";
 import cart_icon from "../Assets/cart_icon.png";
 import { Link, useNavigate } from "react-router-dom";
@@ -49,6 +49,19 @@ export const Navbar = ({ wishlistCount = 0, onWishlistClick = () => {} }) => {
     setShowProfile(false);
     navigate('/orders');
   };
+
+  const profileRef = useRef(null);
+
+  useEffect(() => {
+    if (!showProfile) return;
+    const handleClick = (e) => {
+      if (profileRef.current && !profileRef.current.contains(e.target)) {
+        setShowProfile(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClick);
+    return () => document.removeEventListener('mousedown', handleClick);
+  }, [showProfile]);
 
   return (
     <div className={`navbar fade-in${scrolled ? " navbar-scrolled" : ""} ${showMenu ? "responsive" : ""}`}>
@@ -112,7 +125,7 @@ export const Navbar = ({ wishlistCount = 0, onWishlistClick = () => {} }) => {
               <path d="M6 26c0-4 4.477-7 10-7s10 3 10 7" stroke="#111" strokeWidth="2" fill="none"/>
             </svg>
             {showProfile && (
-              <div className="nav-profile-popup">
+              <div className="nav-profile-popup" ref={profileRef}>
                 <div className="nav-profile-title">Profile</div>
                 <div className="nav-profile-detail"><b>Email:</b> test@test.com</div>
                 <button className="nav-profile-orders" onClick={handleOrders}>My Orders</button>
