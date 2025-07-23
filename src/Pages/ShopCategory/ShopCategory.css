@@ -411,4 +411,7 @@
     z-index: 1000;
     display: block;
   }
+  .shopCategory-sort-dropdown{
+    margin-top: -62px;
+  }
 }

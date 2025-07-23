@@ -59,13 +59,11 @@
 .footer-vogue-links {
   flex: 2;
   display: flex;
-  gap: 64px;
+  gap: 100px;
   justify-content: flex-end;
   min-width: 320px;
 }
-.footer-vogue-links-col {
-  min-width: 160px;
-}
+
 .footer-vogue-links-title {
   font-size: 1.02rem;
   font-weight: 600;
