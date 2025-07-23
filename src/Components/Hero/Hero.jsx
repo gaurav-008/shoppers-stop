@@ -1,25 +1,34 @@
 import React, { useRef, useState } from "react";
 import "./Hero.css";
-import arrow_icon from "../Assets/arrow.png";
 import hero_video from "../Assets/promo4k.webm";
 import { Link } from "react-router-dom";
+import arrow_icon from "../Assets/arrow.png";
 export const Hero = () => {
   const videoRef = useRef(null);
-  const [audioText, setAudioText] = useState("Audio On");
+  const [isMuted, setIsMuted] = useState(true);
+
   const toggleMute = () => {
     if (videoRef.current) {
       videoRef.current.muted = !videoRef.current.muted;
-      if (!videoRef.current.muted) {
-        setAudioText("Audio Off");
-      } else {
-        setAudioText("Audio On");
+      setIsMuted(videoRef.current.muted);
+    }
+  };
+
+  // Scroll to next section
+  const handleScrollDown = () => {
+    const hero = document.getElementById('hero');
+    if (hero) {
+      const next = hero.nextElementSibling;
+      if (next) {
+        const y = next.getBoundingClientRect().top + window.pageYOffset - 64; // 64px offset for navbar
+        window.scrollTo({ top: y, behavior: 'smooth' });
       }
     }
   };
 
   return (
-    <div className="hero">
-      <video
+    <div className="hero" id="hero">
+       <video
         ref={videoRef}
         autoPlay
         loop
@@ -32,22 +41,37 @@ export const Hero = () => {
       <div className="hero-left">
         <h2>NEW ARRIVALS ONLY</h2>
         <div>
-          <p>LOOK SHARP</p>
-          <p>FEEL SHARP</p>
-          <p>BE SHARP</p>
+          <p>LOOK CHIC</p>
+          <p>FEEL CHAP</p>
+          <p>BE CHICO</p>
         </div>
-        <Link style={{ textDecoration: "none" }} to="/api">
-          <div className="hero-latest-button">
-            <p>Latest Collection</p>
-            <img src={arrow_icon} alt="" />
-          </div>
-        </Link>
+        <button
+          className="hero-latest-button"
+          style={{ textDecoration: 'none', border: 'none',  cursor: 'pointer' }}
+          onClick={() => {
+            const el = document.getElementById('featured-collection');
+            if (el) {
+              const y = el.getBoundingClientRect().top + window.pageYOffset - 64; // 64px offset for navbar
+              window.scrollTo({ top: y, behavior: 'smooth' });
+            }
+          }}
+        >
+          <p style={{letterSpacing: '3px'}}>Featured Collection</p>
+          <img src={arrow_icon} alt="" />
+        </button>
       </div>
-      <div className="hero-right">
-        <p onClick={toggleMute} className="hero-unmute-button">
-          {audioText}
-        </p>
+      <div className="hero-controls">
+        <button onClick={toggleMute} className="hero-mute-button">
+          {isMuted ? 'Unmute' : 'Mute'}
+        </button>
       </div>
+      {/* Scroll down arrow */}
+      <button className="hero-scroll-down" onClick={handleScrollDown} aria-label="Scroll to next section">
+        <svg width="54" height="54" viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="27" cy="27" r="27" fill="rgba(0,0,0,0.32)"/>
+          <path d="M17 24l10 10 10-10" stroke="#fff" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+      </button>
     </div>
   );
 };

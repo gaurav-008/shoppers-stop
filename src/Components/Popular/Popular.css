@@ -1,15 +1,16 @@
 .popular {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 18px;
   align-items: center;
-  height: 70vh;
-  padding: 80px 0;
+  padding: 60px 10px;
+  background: #fdfdfd;
 }
 .popular h1 {
   color: #171717;
   font-size: 50px;
-  font-weight: 600;
+  font-weight: 700;
+  letter-spacing: 1px;
 }
 .popular hr {
   width: 200px;
@@ -19,38 +20,54 @@
 }
 .popular-header {
   display: flex;
-  gap: 10px;
+  gap: 12px;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 18px;
 }
 .popular-item {
-  margin-top: 50px;
   display: flex;
-  gap: 30px;
+  gap: 18px;
   overflow-x: auto;
   overflow-y: hidden;
-  height: 100%;
+  padding: 0 10px 30px 10px;
+  scrollbar-width: thin;
+  scrollbar-color: #ff6600 #f1f1f1;
+}
+.popular-item::-webkit-scrollbar {
+  height: 8px;
+}
+.popular-item::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+.popular-item::-webkit-scrollbar-thumb {
+  background: #ff6600;
+  border-radius: 4px;
 }
 @media screen and (max-width: 1200px) {
   .popular {
-    align-items: normal;
-    height: auto;
+    align-items: stretch;
+    padding: 40px 0;
+  }
+  .popular-header {
+    align-items: center;
   }
   .popular-item {
-    overflow-x: auto;
-    padding: 0 30px 80px 30px;
+    padding: 0 30px 40px 30px;
   }
 }
 @media screen and (max-width: 767px) {
   .popular {
-    align-items: normal;
+    padding: 20px 2px;
+  }
+  .popular-header {
+    gap: 8px;
+  }
+  .popular-item {
+    gap: 10px;
+    padding: 0 2px 20px 2px;
   }
   .popular h1 {
     font-size: 30px;
-  }
-  .popular-item {
-    overflow-x: auto;
-    padding: 0 16px 80px 16px;
-    gap: 16px;
   }
 }

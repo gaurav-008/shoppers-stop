@@ -1,19 +1,18 @@
-import React from "react";
-import { Hero } from "../Components/Hero/Hero";
-import { Items } from "../Components/Items/Items";
-import { Popular } from "../Components/Popular/Popular";
-import { Offers } from "../Components/Offers/Offers";
-import { NewCollections } from "../Components/NewCollections/NewCollections";
-import { Newsletter } from "../Components/Newsletter/Newsletter";
+import React from 'react'
+import { Hero } from '../Components/Hero/Hero'
+import ShopByCategory from '../Components/ShopByCategory/ShopByCategory'
+import FeaturedProducts from '../Components/FeaturedProducts/FeaturedProducts'
+import BrandSection from '../Components/BrandSection/BrandSection'
+import Testimonials from '../Components/Testimonials/Testimonials'
 
-export const Shop = () => {
+export const Shop = ({ onAddWishlist, onRemoveWishlist, wishlist }) => {
   return (
     <div>
-      <Hero />
-      <Popular/>
-      <Offers/>
-      <NewCollections/>
-      <Newsletter/>
+        <Hero/>
+        <ShopByCategory />
+        <FeaturedProducts onAddWishlist={onAddWishlist} onRemoveWishlist={onRemoveWishlist} wishlist={wishlist} />
+        <BrandSection />
+        <Testimonials />
     </div>
-  );
-};
+  )
+}

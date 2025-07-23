@@ -1,55 +1,138 @@
-.footer{
-    display: flex;
+/* Vogue-style Footer */
+.footer-vogue {
+  width: 100%;
+  background: #111;
+  color: #fff;
+  padding: 56px 0 0 0;
+  font-family: 'Inter', Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+.footer-vogue-main {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 32px;
+  gap: 48px;
+}
+.footer-vogue-left {
+  flex: 1.2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 260px;
+  margin-bottom: 32px;
+}
+.footer-vogue-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  margin-bottom: 18px;
+}
+.footer-vogue-desc {
+  font-size: 1.05rem;
+  color: #e0e0e0;
+  margin-bottom: 32px;
+  max-width: 340px;
+  line-height: 1.5;
+}
+.footer-vogue-social {
+  display: flex;
+  gap: 32px;
+  margin-bottom: 12px;
+}
+.footer-vogue-social-icon img {
+  width: 32px;
+  height: 32px;
+  filter: brightness(0) invert(1);
+  opacity: 0.85;
+  transition: opacity 0.2s, transform 0.2s;
+}
+.footer-vogue-social-icon:hover img {
+  opacity: 1;
+  transform: scale(1.12);
+}
+.footer-vogue-links {
+  flex: 2;
+  display: flex;
+  gap: 64px;
+  justify-content: flex-end;
+  min-width: 320px;
+}
+.footer-vogue-links-col {
+  min-width: 160px;
+}
+.footer-vogue-links-title {
+  font-size: 1.02rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: #fff;
+  margin-bottom: 18px;
+  text-transform: uppercase;
+}
+.footer-vogue-links-col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.footer-vogue-links-col li {
+  font-size: 1rem;
+  color: #e0e0e0;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.footer-vogue-links-col li:hover {
+  color: #fff;
+}
+.footer-vogue-bottom {
+  border-top: 1px solid #222;
+  margin-top: 32px;
+  padding: 18px 0 12px 0;
+  background: #111;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 0.98rem;
+}
+.footer-vogue-legal-links {
+  color: #b0b0b0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+}
+.footer-vogue-country {
+  color: #b0b0b0;
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+}
+@media (max-width: 900px) {
+  .footer-vogue-main {
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap:50px;
+    gap: 32px;
+    padding: 0 4vw;
+  }
+  .footer-vogue-logo {
+    font-size: clamp(1rem, 4vw, 1.4rem);
+  }
+  .footer-vogue-desc {
+    font-size: clamp(0.8rem, 2vw, 0.95rem);
+    max-width: 100%;
+  }
 }
-.footer-logo{
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
-.footer-logo p{
-    color: #383838;
-    font-size: 48px;
-    font-weight: 700;
-
-}
-.footer-links{
-    display: flex;
-    list-style: none;
-    gap: 50px;
-    color: #252525;
-    font-size: 20px;
-}
-.footer-links li{
-    cursor: pointer;
-}
-.footer-social-icons{
-    display: flex;
-    gap: 20px;
-}
-.footer-icon-conntainer{
-    padding: 10px;
-    padding-bottom: 6px;
-    background:#fbfbfb;
-    border:1px solid #ebebeb;
-}
-.footer-copyright{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 30px;
-    width: 100%;
-    margin-bottom: 30px;
-    color:#1a1a1a;
-    font-size: 20px;
-}
-.footer-copyright hr{
-    width: 80%;
-    border: none;
-    border-radius:10px;
-    height: 3px;
-    background: #c7c7c7;
+@media (max-width: 600px) {
+  .footer-vogue-main {
+    padding: 0 2vw;
+  }
+  .footer-vogue-logo {
+    font-size: clamp(0.8rem, 6vw, 1.1rem);
+  }
 }

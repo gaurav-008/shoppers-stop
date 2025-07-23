@@ -1,33 +1,308 @@
-.item{
-    width:350px
+.graffiti-sticker-corner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  pointer-events: none;
 }
-.item p{
+.graffiti-sticker {
+  font-size: 2.2rem;
+  filter: drop-shadow(0 2px 8px #ffcf00) drop-shadow(0 0 8px #ff2d55);
+  user-select: none;
+}
+.graffiti-bounce {
+  animation: graffiti-bounce 1.2s infinite alternate;
+}
+@keyframes graffiti-bounce {
+  0% { transform: translateY(0); }
+  60% { transform: translateY(-10px) scale(1.1); }
+  100% { transform: translateY(0); }
+}
+.graffiti-wiggle {
+  animation: graffiti-wiggle 1.1s infinite alternate;
+}
+@keyframes graffiti-wiggle {
+  0% { transform: rotate(-8deg); }
+  100% { transform: rotate(8deg); }
+}
+.graffiti-pop {
+  animation: graffiti-pop 0.7s cubic-bezier(.4,0,.2,1) 1;
+}
+@keyframes graffiti-pop {
+  0% { transform: scale(0.7); opacity: 0; }
+  60% { transform: scale(1.18); opacity: 1; }
+  100% { transform: scale(1); }
+}
+.graffiti-rotate {
+  animation: graffiti-rotate 1.8s linear infinite;
+}
+@keyframes graffiti-rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.item {
+  width: 350px;
+  background: #222;
+  border-radius: 18px;
+  overflow: hidden;
+  transition: box-shadow 0.3s, transform 0.3s;
+  animation: itemFadeIn 0.8s cubic-bezier(.4,0,.2,1);
+  position: relative;
+  background: #222 url('https://pngimg.com/d/spray_paint_PNG18818.png') no-repeat 80% 80%/80px auto;
+}
+@keyframes itemFadeIn {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.item:hover {
+  transform: scale(1.07) rotate(-2deg);
+}
+.item p, .item .item-title {
+  font-family: 'Bangers', cursive;
+  color: #ffcf00;
+  font-size: 1.2rem;
     margin: 6px 0px;
+  text-shadow: 1px 1px 0 #ff2d55;
 }
-.item-prices{
+.item-prices {
     display: flex;
-    gap:20px
+  gap: 20px;
 }
-.new-price{
-color:#374151;
+.new-price {
+  color: #ff2d55;
 font-size: 18px;
-font-weight: 600;
+  font-weight: 700;
 }
-.old-price{
-color: #8c8c8c;
+.old-price {
+  color: #bfc3c3;
 font-size: 18px;
 font-weight: 500;
 text-decoration: line-through;
 }
-.item:hover{
-    transform: scale(1.05);
-    transition: 0.6s;
+.item-image-container {
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  border-radius: 0;
 }
-@media screen and (max-width: 767px){
-    .item{
-        min-width: 90%
-    }
-    .item img{
+.item-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0;
+  transition: none;
+}
+.item-details {
+  padding: 18px 0 0 0;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  gap: 6px;
+}
+.item-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #111;
+  margin: 0 0 2px 0;
+  letter-spacing: 0.01em;
+}
+.item-prices {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-top: 0;
+  padding-top: 0;
+}
+.new-price {
+  font-family: 'Inter', sans-serif;
+  color: #181818;
+  font-size: 1rem;
+  font-weight: 600;
+}
+.old-price {
+  font-family: 'Inter', sans-serif;
+  color: #b0b0b0;
+  font-size: 0.95rem;
+  font-weight: 400;
+  text-decoration: line-through;
+}
+.item-zara {
+  width: 320px;
+  background: none;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 0;
+  margin: 0 0 24px 0;
+  position: relative;
+}
+.item-zara-link {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+}
+.item-zara-image-container {
+  width: 100%;
+  height: 420px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 0;
+}
+.item-zara-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0;
+  transition: transform 0.4s cubic-bezier(.4,0,.2,1);
+}
+.item-zara-link:hover .item-zara-image {
+  transform: scale(1.04);
+}
+.item-zara-overlay {
+  position: absolute;
+  left: 0;
+  bottom: 0;
         width: 100%;
-    }
+  background: linear-gradient(0deg, rgba(255,255,255,0.92) 98%, rgba(255,255,255,0.0) 100%);
+  padding: 18px 18px 10px 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+}
+.item-zara-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: #111;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 2px;
+  line-height: 1.2;
+}
+.item-zara-price {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #181818;
+  letter-spacing: 0.08em;
+}
+.item-with-wishlist .item-wishlist-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(255,255,255,0.92);
+  border: none;
+  border-radius: 50%;
+  padding: 6px;
+  z-index: 3;
+  opacity: 0;
+  transition: opacity 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px #ff2d5522;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+.item-with-wishlist:hover .item-wishlist-btn,
+.item-with-wishlist:focus-within .item-wishlist-btn {
+  opacity: 1;
+}
+.item-wishlist-btn svg {
+  stroke: #ff2d55;
+  fill: none;
+  transition: stroke 0.2s, filter 0.2s;
+}
+.item-wishlist-btn:hover svg {
+  filter: drop-shadow(0 2px 8px #ff2d55);
+  stroke: #ff0055;
+}
+.item-wishlist-toast {
+  position: absolute;
+  top: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #ff2d55;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 8px 22px;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px #ff2d5522;
+  z-index: 10;
+  opacity: 0;
+  animation: wishlist-toast-in 0.2s forwards, wishlist-toast-out 0.3s 1.2s forwards;
+  pointer-events: none;
+}
+@keyframes wishlist-toast-in {
+  from { opacity: 0; transform: translateX(-50%) translateY(-10px); }
+  to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+@keyframes wishlist-toast-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+@media (max-width: 1200px) {
+  .item {
+    width: 48vw;
+    min-width: 180px;
+    max-width: 320px;
+  }
+}
+@media (max-width: 900px) {
+  .item {
+    width: 98vw;
+    min-width: 140px;
+    max-width: 100vw;
+  }
+}
+@media (max-width: 767px) {
+  .item {
+    width: 100%;
+    min-width: 0;
+    max-width: 100vw;
+    box-sizing: border-box;
+  }
+  .item-image-container {
+    width: 100%;
+    height: 180px;
+    min-width: 0;
+  }
+  .item-zara {
+    width: 98vw;
+    min-width: 0;
+    max-width: 100vw;
+  }
+  .item-zara-image-container {
+    width: 100%;
+    height: 180px;
+    min-width: 0;
+  }
+  .item-zara-overlay {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    padding:8px
+  }
+  .item-title, .item-zara-title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    max-width: 100%;
+  }
+  .item-with-wishlist .item-wishlist-btn {
+    top: 8px;
+    right: 8px;
+    padding: 4px;
+    opacity: 1;
+  }
+}
+.item-title, .item-zara-title {
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
 }

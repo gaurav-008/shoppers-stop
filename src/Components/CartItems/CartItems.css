@@ -1,96 +1,225 @@
-.cartItems {
-  margin: 100px 170px;
-}
-.cardItems hr {
-  height: 3px;
-  background: #e2e2e2;
-  border: 0;
-}
-.cartItems-format-main {
-  display: grid;
-  grid-template-columns: 0.5fr 2fr 1fr 1fr 1fr 1fr;
-  align-items: center;
-  gap: 75px;
-  padding: 20px 0px;
-  color: #454545;
-  font-size: 18px;
-  font-weight: 600;
-}
-.cartItems-format {
-  font-size: 17px;
-  font-weight: 500px;
-}
-.cartItems-product-icon {
-  height: 62px;
-}
-.cartItems-remove-icon {
-  width: 15px;
-  margin: 0px 40px;
-  cursor: pointer;
-}
-.cartItems-quantity {
-  width: 64px;
-  height: 50px;
-  background: white;
-  border: 2px solid #ebebeb;
-}
-.cartItems-down {
+.zara-cart-container {
+  width: 100%;
+  background: #fff;
+  min-height: 60vh;
+  padding: 48px 0 64px 0;
   display: flex;
-  margin: 100px 0px;
+  justify-content: center;
 }
-.cartItems-total {
+.zara-cart-main {
+  display: flex;
+  gap: 64px;
+  max-width: 1100px;
+  width: 100%;
+  align-items: flex-start;
+}
+.zara-cart-left {
+  flex: 2;
+}
+.zara-cart-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  margin-bottom: 36px;
+  color: #111;
+  font-family: 'Inter', Arial, sans-serif;
+}
+.zara-cart-empty {
+  color: #888;
+  font-size: 1.1rem;
+  margin-top: 32px;
+  text-align: left;
+}
+.zara-cart-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+.zara-cart-item {
+  display: flex;
+  gap: 28px;
+  align-items: flex-start;
+  border-bottom: 1px solid #ececec;
+  padding-bottom: 28px;
+}
+.zara-cart-img-wrap {
+  width: 110px;
+  height: 140px;
+  background: #fafafa;
+  border: 1px solid #ececec;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.zara-cart-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.zara-cart-info {
   flex: 1;
   display: flex;
   flex-direction: column;
-  margin-right: 200px;
+  gap: 10px;
+  justify-content: center;
 }
-.cartItems-total-item {
+.zara-cart-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #232323;
+  margin-bottom: 2px;
+}
+.zara-cart-price {
+  font-size: 1rem;
+  color: #444;
+  margin-bottom: 8px;
+}
+.zara-cart-qty-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1rem;
+  color: #232323;
+}
+.zara-cart-qty {
+  display: inline-block;
+  min-width: 32px;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 500;
+  border-bottom: 1px solid #ececec;
+  margin: 0 4px;
+}
+.zara-cart-remove {
+  width: 18px;
+  height: 18px;
+  margin-left: 8px;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.2s, transform 0.2s;
+}
+.zara-cart-remove:hover {
+  opacity: 1;
+  transform: scale(1.15);
+}
+.zara-cart-right {
+  flex: 1.1;
+  min-width: 320px;
+  background: #fafafa;
+  border: 1px solid #ececec;
+  border-radius: 8px;
+  padding: 32px 28px 24px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: stretch;
+}
+.zara-cart-summary-title {
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  margin-bottom: 18px;
+  color: #232323;
+  text-transform: uppercase;
+}
+.zara-cart-summary-row {
   display: flex;
   justify-content: space-between;
-  padding: 15px 0px;
+  align-items: center;
+  font-size: 1rem;
+  color: #232323;
+  margin-bottom: 10px;
 }
-.cartItems-total button {
-  width: 262px;
-  height: 58px;
-  outline: none;
-  border: none;
-  background: #ff5a5a;
-
-  color: #fff;
-  font-size: 16px;
-  font-weight: 600;
+.zara-cart-summary-total {
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-top: 18px;
+  margin-bottom: 18px;
+  border-top: 1px solid #ececec;
+  padding-top: 12px;
+}
+.zara-cart-checkout {
+  width: 100%;
+  height: 48px;
+  background: #fff;
+  color: #232323;
+  border: 1px solid #232323;
+  border-radius: 4px;
+  font-size: 1.08rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
   cursor: pointer;
+  margin-top: 12px;
+  margin-bottom: 18px;
+  transition: background 0.2s, color 0.2s;
 }
-.cartItems-promocode {
+.zara-cart-checkout:hover {
+  background: #232323;
+  color: #fff;
+}
+.zara-cart-promo {
+  display: flex;
+  gap: 0;
+  margin-top: 18px;
+  border-bottom: 1px solid #ececec;
+}
+.zara-cart-promo input {
   flex: 1;
-  font-size: 16px;
-  font-weight: 500;
-}
-.cartItems-promocode p {
-  color: #555;
-}
-.cartItems-promobox {
-  width: 504px;
-  margin-top: 15px;
-  padding-left: 20px;
-  height: 58px;
-  background: #eaeaea;
-}
-.cartItems-promobox input {
   border: none;
   outline: none;
   background: transparent;
-  font-size: 16px;
-  width: 330px;
-  height: 50px;
+  font-size: 1rem;
+  padding: 8px 0;
+  color: #232323;
 }
-.cartItems-promobox button {
-  width: 170px;
-  height: 58px;
-  color: white;
-  cursor: pointer;
-  background: #ff5a5a;
-  font-size: 16px;
-  outline: none;
+.zara-cart-promo button {
+  background: none;
   border: none;
+  color: #232323;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  padding: 8px 16px;
+  transition: color 0.2s;
+}
+.zara-cart-promo button:hover {
+  color: #888;
+}
+@media (max-width: 900px) {
+  .zara-cart-main {
+    flex-direction: column;
+    gap: 32px;
+    max-width: 98vw;
+  }
+  .zara-cart-right {
+    min-width: 0;
+    width: 100%;
+    padding: 24px 10px 18px 10px;
+  }
+}
+@media (max-width: 600px) {
+  .zara-cart-container {
+    padding: 24px 0 32px 0;
+  }
+  .zara-cart-title {
+    font-size: clamp(1rem, 3vw, 1.2rem);
+    margin-bottom: 18px;
+  }
+  .zara-cart-item {
+    gap: 12px;
+    padding-bottom: 16px;
+  }
+  .zara-cart-img-wrap {
+    width: 70px;
+    height: 90px;
+  }
 }
