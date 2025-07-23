@@ -30,15 +30,16 @@ export const Hero = () => {
   return (
     <div className="hero" id="hero">
        <video
-        ref={videoRef}
-        autoPlay
-        loop
-        muted
-        className="hero-video"
-        controls={false}
-        preload="none"
-        poster="/brand.png"
-      >
+  ref={videoRef}
+  autoPlay
+  loop
+  muted
+  playsInline
+  controls={false}
+  preload="none"
+  poster="/brand.png"
+  className="hero-video"
+>
 
 <source src={hero} type="video/mp4" />
         <source src={hero_video} type="video/mp4" />

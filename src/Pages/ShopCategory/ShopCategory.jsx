@@ -1,4 +1,4 @@
-import React, { useContext, useState, useRef, useEffect } from "react";
+import React, { useContext, useState, useRef, useEffect, useLayoutEffect } from "react";
 import "./ShopCategory.css";
 import { ShopContext } from "../../Contexts/ShopContext";
 import { Items } from "../../Components/Items/Items";
@@ -119,6 +119,24 @@ export const ShopCategory = ({ banner, category, onAddWishlist, onRemoveWishlist
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  // Prevent background scroll when sidebar is open
+  useLayoutEffect(() => {
+    if (filterOpen) {
+      document.body.classList.add('sidebar-open');
+    } else {
+      document.body.classList.remove('sidebar-open');
+    }
+    return () => document.body.classList.remove('sidebar-open');
+  }, [filterOpen]);
+
+  // Minimal filter icon SVG
+  const FilterIcon = ({ style = {}, ...props }) => (
+    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" style={style} {...props}>
+      <rect width="28" height="28" rx="8" fill="#222"/>
+      <path d="M8 11h12M10 15h8" stroke="#fff" strokeWidth="2.2" strokeLinecap="round"/>
+    </svg>
+  );
+
   return (
     <div className="shop-category">
       {hero && (
@@ -134,16 +152,21 @@ export const ShopCategory = ({ banner, category, onAddWishlist, onRemoveWishlist
         </div>
       )}
       <div className="shop-category-main">
-        <button
-          className="filter-toggle-btn"
-          style={{ display: window.innerWidth <= 767 ? 'block' : 'none' }}
-          onClick={() => setFilterOpen(f => !f)}
-        >
-          {filterOpen ? "Hide Filters" : "Show Filters"}
-        </button>
+       
         {filterOpen && (
-          <aside className="shop-category-filter-sidebar always-open">
-            <div className="filter-heading">Filter</div>
+          <>
+            <div className="shop-category-filter-backdrop" onClick={() => setFilterOpen(false)} />
+            <aside className="shop-category-filter-sidebar always-open">
+            {/* Close button for mobile sidebar */}
+            <button
+              className="filter-sidebar-close"
+              style={{ position: 'absolute', top: 12, right: 16, background: 'none', border: 'none', fontSize: 32, color: '#222', cursor: 'pointer', zIndex: 10 }}
+              onClick={() => setFilterOpen(false)}
+              aria-label="Close filters"
+            >
+              &times;
+            </button>
+            <div className="filter-heading" style={{paddingRight: 36}}>Filter</div>
             <hr className="filter-separator" />
             <div className="filter-section">
               <div className="filter-title">Price</div>
@@ -225,10 +248,12 @@ export const ShopCategory = ({ banner, category, onAddWishlist, onRemoveWishlist
             </div>
             <button className="filter-reset-btn" onClick={resetFilters}>Reset Filters</button>
           </aside>
+          </>
         )}
         <main className="shop-category-content">
           <div className="shop-category-controls fade-in">
-            <div className="shop-category-search-filter">
+            {/* Search input always on its own line */}
+            <div className="shop-category-search-row">
               <input
                 type="text"
                 className="shop-category-search"
@@ -237,18 +262,31 @@ export const ShopCategory = ({ banner, category, onAddWishlist, onRemoveWishlist
                 onChange={e => setSearch(e.target.value)}
               />
             </div>
-            <div className="shopCategory-sort" ref={sortRef} onClick={() => setShowSort(s => !s)}>
-              Sort by <img src={dropdown_icon} alt="Sort" />
-              {showSort && (
-                <div className="shopCategory-sort-dropdown">
-                  <div onClick={() => { setSort("price-asc"); setShowSort(false); }}>Price: Low to High</div>
-                  <div onClick={() => { setSort("price-desc"); setShowSort(false); }}>Price: High to Low</div>
-                  <div onClick={() => { setSort("name-asc"); setShowSort(false); }}>Name: A-Z</div>
-                  <div onClick={() => { setSort("name-desc"); setShowSort(false); }}>Name: Z-A</div>
-                </div>
-              )}
+            {/* On mobile, filter and sort side by side; on desktop, just sort */}
+            <div className="shop-category-filter-sort-row">
+              {/* Minimal filter icon, only on mobile */}
+              <span
+                className="shop-category-filter-icon"
+                style={{ display: window.innerWidth <= 700 ? 'flex' : 'none', alignItems: 'center', cursor: 'pointer', marginRight: 8 }}
+                onClick={() => setFilterOpen(true)}
+                tabIndex={0}
+                aria-label="Show filters"
+              >
+                <FilterIcon />
+              </span>
+              <div className="shopCategory-sort" ref={sortRef} onClick={() => setShowSort(s => !s)}>
+                Sort by <img src={dropdown_icon} alt="Sort" />
+                {showSort && (
+                  <div className="shopCategory-sort-dropdown">
+                    <div onClick={() => { setSort("price-asc"); setShowSort(false); }}>Price: Low to High</div>
+                    <div onClick={() => { setSort("price-desc"); setShowSort(false); }}>Price: High to Low</div>
+                    <div onClick={() => { setSort("name-asc"); setShowSort(false); }}>Name: A-Z</div>
+                    <div onClick={() => { setSort("name-desc"); setShowSort(false); }}>Name: Z-A</div>
+                  </div>
+                )}
+              </div>
             </div>
-      </div>
+          </div>
       <div className="shop-category-controls fade-in">
         <p>
           <span>Showing 1-{Math.min(visibleProducts, filteredProducts.length)}</span> out of {filteredProducts.length} products

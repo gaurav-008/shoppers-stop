@@ -3,17 +3,29 @@
 import React, { useState, useRef, useEffect, useContext } from "react";
 import "./Navbar.css";
 import cart_icon from "../Assets/cart_icon.png";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { ShopContext } from "../../Contexts/ShopContext";
 import { isUserLoggedIn } from "../../Pages/LoginSignUp"; // If you have a heart.svg, otherwise use inline SVG
 
 export const Navbar = ({ wishlistCount = 0, onWishlistClick = () => {} }) => {
-  const [menu, setMenu] = useState("shop");
   const [showMenu, setShowMenu] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [loggedIn, setLoggedIn] = useState(isUserLoggedIn());
   const [showProfile, setShowProfile] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
+
+  // Helper to determine active menu
+  const getActiveMenu = () => {
+    if (location.pathname === "/" || location.pathname.startsWith("/shop")) return "shop";
+    if (location.pathname.startsWith("/women")) return "women";
+    if (location.pathname.startsWith("/men")) return "men";
+    if (location.pathname.startsWith("/kids")) return "kids";
+    if (location.pathname.startsWith("/community")) return "community";
+    if (location.pathname.startsWith("/grwm")) return "grwm";
+    return "";
+  };
+  const activeMenu = getActiveMenu();
 
   const toggleMenu = () => {
     setShowMenu(!showMenu);
@@ -76,38 +88,32 @@ export const Navbar = ({ wishlistCount = 0, onWishlistClick = () => {} }) => {
         &#9776;
       </div>
       <ul className={`nav-menu ${showMenu ? "show" : ""}`}>
-        <li onClick={() => setMenu("shop")}
-            className={menu === "shop" ? "active" : ""}>
+        <li className={activeMenu === "shop" ? "active" : ""}>
           <Link to="/" onClick={() => setShowMenu(false)}>
             Home
           </Link>
         </li>
-        <li onClick={() => setMenu("women")}
-            className={menu === "women" ? "active" : ""}>
+        <li className={activeMenu === "women" ? "active" : ""}>
           <Link to="/women" onClick={() => setShowMenu(false)}>
             Chic
           </Link>
         </li>
-        <li onClick={() => setMenu("men")}
-            className={menu === "men" ? "active" : ""}>
+        <li className={activeMenu === "men" ? "active" : ""}>
           <Link to="/men" onClick={() => setShowMenu(false)}>
             Chap
           </Link>
         </li>
-        <li onClick={() => setMenu("kids")}
-            className={menu === "kids" ? "active" : ""}>
+        <li className={activeMenu === "kids" ? "active" : ""}>
           <Link to="/kids" onClick={() => setShowMenu(false)}>
             Chico
           </Link>
         </li>
-        <li onClick={() => setMenu("community")}
-            className={menu === "community" ? "active" : ""}>
+        <li className={activeMenu === "community" ? "active" : ""}>
           <Link to="/community" onClick={() => setShowMenu(false)} style={{color: 'red'}}>
             #GENZGLAM
           </Link>
         </li>
-        <li onClick={() => setMenu("grwm")}
-            className={menu === "grwm" ? "active" : ""}>
+        <li className={activeMenu === "grwm" ? "active" : ""}>
           <Link to="/grwm" onClick={() => setShowMenu(false)} style={{color: 'purple'}}>
           #GRWM
           </Link>

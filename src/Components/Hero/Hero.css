@@ -2,6 +2,7 @@
   height: 100vh;
   min-height: 100vh;
   display: flex;
+  margin-top: -70px !important;
 }
 .hero-left {
   flex: 1;
@@ -125,7 +126,10 @@ video {
   display: block;
 }
 @media screen and (max-width: 1200px) {
-  .hero-left {
+  .hero
+{
+  margin-top: -110px !important;
+}  .hero-left {
     padding-left: 80px;
   }
   .hero-right img {
