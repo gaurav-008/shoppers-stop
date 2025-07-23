@@ -33,7 +33,7 @@ export const CartItems = () => {
               {cartProducts.map((e) => (
                 <li className="zara-cart-item" key={e.id}>
                   <div className="zara-cart-img-wrap">
-                    <img src={e.image} alt={e.name} className="zara-cart-img" />
+                    <img src={e.image} alt={e.name} className="zara-cart-img" loading="lazy" />
                   </div>
                   <div className="zara-cart-info">
                     <div className="zara-cart-name">{e.name}</div>
@@ -46,6 +46,7 @@ export const CartItems = () => {
                         src={remove_icon}
                         alt="Remove"
                         onClick={() => removeFromCart(e.id)}
+                        loading="lazy"
                       />
                     </div>
                   </div>

@@ -45,11 +45,12 @@ export const ProductDisplay = (props) => {
               alt={product.name + ' thumbnail'}
               className={activeImg === img ? 'active' : ''}
               onClick={() => setActiveImg(img)}
+              loading="lazy"
             />
           ))}
         </div>
         <div className="product-hnm-main-img">
-          <img src={activeImg} alt={product.name} />
+          <img src={activeImg} alt={product.name} loading="lazy" />
         </div>
       </div>
       <div className="product-hnm-info">

@@ -39,6 +39,7 @@ export const Items = (props) => {
             src={props.image}
             alt={props.name}
             className="item-zara-image"
+            loading="lazy"
           />
           <button className="item-wishlist-btn" aria-label={isWishlisted ? "Remove from wishlist" : "Add to wishlist"} onClick={handleWishlist} tabIndex={-1}>
             <img src={require(`../Assets/${isWishlisted ? 'icons8-heart-48.png' : 'icons8-heart-40.png'}`)} alt="Wishlist" style={{width: 24, height: 24, objectFit: 'contain'}} />

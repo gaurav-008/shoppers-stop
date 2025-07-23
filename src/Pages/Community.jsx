@@ -68,6 +68,7 @@ export const Community = () => {
                       alt={winner.name + ' look'}
                       className="community-stack-img"
                       style={{ top: `${i * 6}px`, left: `${i * 42}px`, zIndex: 10 - i }}
+                      loading="lazy"
                     />
                   ))}
                   {winner.images.length > 4 && (
@@ -99,6 +100,7 @@ export const Community = () => {
                     alt={person.name + ' look'}
                     className="community-stack-img"
                     style={{ top: `${i * 6}px`, left: `${i * 42}px`, zIndex: 10 - i }}
+                    loading="lazy"
                   />
                 ))}
                 {person.images.length > 4 && (
@@ -119,7 +121,7 @@ export const Community = () => {
             <h2 className="community-modal-title">{modal.name}'s Looks</h2>
             <div className="community-modal-images">
               {modal.images.map((img, i) => (
-                <img key={i} src={img} alt={modal.name + ' look ' + (i + 1)} className="community-modal-img" />
+                <img key={i} src={img} alt={modal.name + ' look ' + (i + 1)} className="community-modal-img" loading="lazy" />
               ))}
             </div>
             <button className="community-modal-close" onClick={closeModal}>Close</button>

@@ -54,7 +54,7 @@ export const Navbar = ({ wishlistCount = 0, onWishlistClick = () => {} }) => {
     <div className={`navbar fade-in${scrolled ? " navbar-scrolled" : ""} ${showMenu ? "responsive" : ""}`}>
       <Link style={{ textDecoration: "none" }} to="/">
         <div className="nav-logo">
-        <img src="https://chicchaps.com/wp-content/uploads/2025/01/cropped-CHIC-CHAPS-2-242x300.png" alt="ChicChaps Logo" className="nav-logo-img" style={{height: 40, width: 'auto', objectFit: 'contain'}} />
+        <img src="https://chicchaps.com/wp-content/uploads/2025/01/cropped-CHIC-CHAPS-2-242x300.png" alt="ChicChaps Logo" className="nav-logo-img" style={{height: 40, width: 'auto', objectFit: 'contain'}} loading="lazy" />
 
           <p>ChicChaps</p>
         </div>
@@ -102,7 +102,7 @@ export const Navbar = ({ wishlistCount = 0, onWishlistClick = () => {} }) => {
       </ul>
       <div className={`nav-login-cart ${showMenu ? "show" : ""}`}>
       <button className="nav-wishlist-btn" aria-label="Wishlist" onClick={onWishlistClick}>
-          <img src={require('../Assets/icons8-heart-40.png')} alt="Wishlist" style={{width: 28, height: 28, objectFit: 'contain'}} />
+          <img src={require('../Assets/icons8-heart-40.png')} alt="Wishlist" style={{width: 28, height: 28, objectFit: 'contain'}} loading="lazy" />
           {wishlistCount > 0 && <span className="nav-wishlist-count">{wishlistCount}</span>}
         </button>
         {loggedIn ? (
@@ -126,7 +126,7 @@ export const Navbar = ({ wishlistCount = 0, onWishlistClick = () => {} }) => {
           </Link>
         )}
         <div className="nav-cart-icon" onClick={() => navigate('/cart')} style={{position: 'relative'}}>
-          <img src={require("../Assets/cart_icon.png")} alt="Cart" style={{width: 32, height: 32}} />
+          <img src={require("../Assets/cart_icon.png")} alt="Cart" style={{width: 32, height: 32}} loading="lazy" />
           {cartCount > 0 && <span className="nav-cart-count-badge">{cartCount}</span>}
         </div>
       </div>

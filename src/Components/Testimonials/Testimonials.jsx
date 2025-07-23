@@ -27,7 +27,7 @@ const Testimonials = () => {
       <div className="testimonial-cards">
         {testimonialsData.map((testimonial, index) => (
           <div key={index} className="testimonial-card fade-in" style={{ animationDelay: `${index * 0.2}s` }}>
-            <img src={testimonial.image} alt={testimonial.name} className="testimonial-image" />
+            <img src={testimonial.image} alt={testimonial.name} className="testimonial-image" loading="lazy" />
             <p className="testimonial-quote">"{testimonial.quote}"</p>
             <h4 className="testimonial-name">- {testimonial.name}</h4>
           </div>

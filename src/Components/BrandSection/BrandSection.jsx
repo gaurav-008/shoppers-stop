@@ -5,7 +5,7 @@ const BrandSection = () => {
   return (
     <div className="brand-section fade-in">
       <div className="brand-image-container">
-        <img src="/brand.png" alt="Our Brand Story" className="brand-image" />
+        <img src="/brand.png" alt="Our Brand Story" className="brand-image" loading="lazy" />
       </div>
       <div className="brand-content">
         <h2 className="section-title">More Than Just Clothes</h2>

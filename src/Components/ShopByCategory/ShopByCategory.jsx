@@ -30,7 +30,7 @@ const ShopByCategory = () => {
         {categories.map((category, index) => (
           <div key={index} className="category-card-container fade-in" style={{ animationDelay: `${index * 0.2}s` }}>
             <Link to={category.path} className="category-card">
-              <img src={category.image} alt={category.name} className="category-image" />
+              <img src={category.image} alt={category.name} className="category-image" loading="lazy" />
               <div className="category-overlay">
                 <h3 className="category-name">{category.name}</h3>
               </div>

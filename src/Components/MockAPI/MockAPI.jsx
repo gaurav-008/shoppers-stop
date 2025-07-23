@@ -18,7 +18,7 @@ export const MockAPI = () => {
     <div class="container">
       {state.mock.data.map((e) => (
        <figure>
-       <img src={e.avatar} alt="Mountains"/>
+       <img src={e.avatar} alt="Mountains" loading="lazy"/>
        <figcaption>{e.name}</figcaption>
    </figure>
       ))}
