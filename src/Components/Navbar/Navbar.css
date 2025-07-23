@@ -273,7 +273,7 @@
   margin-right: 8px;
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1400px) {
   .navbar {
     padding: 8px 16px;
   }
@@ -299,11 +299,12 @@
 
   .nav-menu.show {
     display: flex;
+    height: 40vh;
   }
   .nav-login-cart.show {
     display: flex;
     position: absolute;
-    top: 260px;
+    top: 40vh;
     left: 0px;
     width: 100%;
     justify-content: space-around;

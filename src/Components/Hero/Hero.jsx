@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import "./Hero.css";
+import hero from "../Assets/pro.mp4";
 import hero_video from "../Assets/promo4k-ezgif.com-gif-maker.webm";
 import { Link } from "react-router-dom";
 import arrow_icon from "../Assets/arrow.png";
@@ -38,6 +39,8 @@ export const Hero = () => {
         preload="none"
         poster="/brand.png"
       >
+
+<source src={hero} type="video/mp4" />
         <source src={hero_video} type="video/mp4" />
       </video>
       <div className="hero-left">

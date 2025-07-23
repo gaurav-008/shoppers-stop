@@ -192,11 +192,11 @@ export const GRWM = () => {
         {isMobile && (
           <div className="grwm-carousel-outer grwm-carousel-mobile">
             <div className="grwm-carousel-row grwm-carousel-row-mobile">
-              {videos.map(video => (
-                <div
-                  key={video.id}
-                  className={`grwm-thumb-card${selected.id === video.id ? ' grwm-thumb-active' : ''}`}
-                  onClick={() => setSelected(video)}
+        {videos.map(video => (
+          <div
+            key={video.id}
+            className={`grwm-thumb-card${selected.id === video.id ? ' grwm-thumb-active' : ''}`}
+            onClick={() => setSelected(video)}
                   style={{
                     cursor: 'pointer',
                     minWidth: '80vw',
@@ -291,41 +291,41 @@ export const GRWM = () => {
           </div>
         </div>
       ) : (
-        <div style={{display: 'flex', justifyContent: 'center', alignItems: 'flex-start', gap: 60}}>
-          {/* Featured items left */}
-          <div className="grwm-featured-list" style={{minWidth: 220, display: 'flex', flexDirection: 'column', gap: 18}}>
-            <h3 style={{fontSize: '2.2rem', marginBottom: 12, color: '#ff2d55'}}>Featured in this video</h3>
-            {featured.map(item => (
-              <div key={item.id} className="grwm-featured-item" style={{display: 'flex', alignItems: 'center', gap: 12, background: '#fafafa', borderRadius: 10, padding: '8px 10px'}}>
-                <img src={item.image} alt={item.name} style={{width: 48, height: 64, objectFit: 'cover', borderRadius: 8, background: '#eee'}} />
-                <div style={{flex: 1}}>
-                  <div style={{fontWeight: 600, fontSize: '1rem', color: '#181818', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis'}}>{item.name}</div>
-                  <div style={{color: '#ff2d55', fontWeight: 700, fontSize: '0.98rem'}}>Rs {item.new_price}</div>
-                </div>
-              </div>
-            ))}
-            <div style={{marginTop: 32, display: 'flex', justifyContent: 'center'}}>
-              <button className="accent-btn" style={{fontSize: '1.1rem', padding: '14px 44px'}} onClick={handleBuyDrip}>Buy this drip</button>
-            </div>
-          </div>
-          {/* Video player right */}
-          <div style={{flex: 1, minWidth: 320, maxWidth: 700}}>
-            <div className="grwm-player-wrap">
-              <div className="grwm-player-aspect">
-                <iframe
-                  key={selected.id}
-                  src={getEmbedUrl(selected.url)}
-                  title={selected.title}
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  className="grwm-player"
-                ></iframe>
+      <div style={{display: 'flex', justifyContent: 'center', alignItems: 'flex-start', gap: 60}}>
+        {/* Featured items left */}
+        <div className="grwm-featured-list" style={{minWidth: 220, display: 'flex', flexDirection: 'column', gap: 18}}>
+          <h3 style={{fontSize: '2.2rem', marginBottom: 12, color: '#ff2d55'}}>Featured in this video</h3>
+          {featured.map(item => (
+            <div key={item.id} className="grwm-featured-item" style={{display: 'flex', alignItems: 'center', gap: 12, background: '#fafafa', borderRadius: 10, padding: '8px 10px'}}>
+              <img src={item.image} alt={item.name} style={{width: 48, height: 64, objectFit: 'cover', borderRadius: 8, background: '#eee'}} />
+              <div style={{flex: 1}}>
+                <div style={{fontWeight: 600, fontSize: '1rem', color: '#181818', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis'}}>{item.name}</div>
+                <div style={{color: '#ff2d55', fontWeight: 700, fontSize: '0.98rem'}}>Rs {item.new_price}</div>
               </div>
             </div>
-            {toast && <div className="grwm-toast">{toast}</div>}
+          ))}
+          <div style={{marginTop: 32, display: 'flex', justifyContent: 'center'}}>
+            <button className="accent-btn" style={{fontSize: '1.1rem', padding: '14px 44px'}} onClick={handleBuyDrip}>Buy this drip</button>
           </div>
         </div>
+        {/* Video player right */}
+        <div style={{flex: 1, minWidth: 320, maxWidth: 700}}>
+          <div className="grwm-player-wrap">
+            <div className="grwm-player-aspect">
+              <iframe
+                key={selected.id}
+                src={getEmbedUrl(selected.url)}
+                title={selected.title}
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="grwm-player"
+              ></iframe>
+            </div>
+          </div>
+          {toast && <div className="grwm-toast">{toast}</div>}
+        </div>
+      </div>
       )}
     </div>
   );
