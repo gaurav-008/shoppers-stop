@@ -1,0 +1,183 @@
+.card {
+    width: 320px;
+    height: 200px;
+    border-radius: 20px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 24px;
+    margin: 16px;
+    color: #fff;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    position: relative;
+    background: linear-gradient(135deg, #444 60%, #222 100%);
+    transition: transform 0.2s;
+  }
+  
+  .card:hover {
+    transform: scale(1.04) rotate(-1deg);
+  }
+  
+  .card-silver {
+    background: linear-gradient(135deg, #bfc7ce 60%, #e6e8ea 100%);
+    color: #222;
+  }
+  
+  .card-golden {
+    background: linear-gradient(135deg, #ebd141 60%, #ffecb3 100%);
+    color: #c49b2d;
+  }
+  
+  .card-platinum {
+    background: linear-gradient(135deg, #e5e4e2 60%, #b3b3b3 100%);
+    color: #222;
+  }
+  
+  .card-type {
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    opacity: 0.85;
+  }
+  
+  .card-number {
+    font-size: 1.4rem;
+    letter-spacing: 2px;
+    margin-bottom: 18px;
+    font-family: 'Courier New', Courier, monospace;
+  }
+  
+  .card-holder-label {
+    font-size: 0.8rem;
+    opacity: 0.7;
+  }
+  
+  .card-holder {
+    font-size: 1.1rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+  }
+  
+  .card-genz {
+    background: linear-gradient(135deg, #ff6fd8 0%, #3813c2 100%);
+    color: #fff;
+    font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 6px 32px rgba(56,19,194,0.18);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+    padding: 28px 28px 32px 28px;
+  }
+  .genz-bg-shapes {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: 1;
+  }
+  .genz-shape.genz-circle {
+    position: absolute;
+    top: 18px; left: 22px;
+    width: 48px; height: 48px;
+    background: rgba(255,255,255,0.18);
+    border-radius: 50%;
+  }
+  .genz-shape.genz-triangle {
+    position: absolute;
+    bottom: 24px; right: 32px;
+    width: 0; height: 0;
+    border-left: 32px solid transparent;
+    border-right: 32px solid transparent;
+    border-bottom: 48px solid rgba(255,255,255,0.13);
+  }
+  .genz-shape.genz-squiggle {
+    position: absolute;
+    left: 50%; top: 50%;
+    font-size: 2.2rem;
+    color: rgba(255,255,255,0.22);
+    transform: translate(-50%, -50%) rotate(-18deg);
+  }
+  .genz-emoji {
+    font-size: 2.8rem;
+    z-index: 2;
+    margin-bottom: 18px;
+  }
+  .genz-card-number {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    z-index: 2;
+    margin-bottom: 12px;
+    font-family: 'Fira Mono', 'Courier New', Courier, monospace;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .genz-card-holder-label {
+    font-size: 0.85rem;
+    opacity: 0.7;
+    z-index: 2;
+  }
+  .genz-card-holder {
+    font-size: 1.15rem;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    z-index: 2;
+  }
+  .genz-silver {
+    background: linear-gradient(135deg, #d3d3d3 0%, #f8fafc 100%);
+    color: #222;
+  }
+  .genz-golden {
+    background: linear-gradient(135deg, #ffe259 0%, #ffa751 100%);
+    color: #7c5a00;
+  }
+  .genz-platinum {
+    background: linear-gradient(135deg, #e5e4e2 0%, #b3b3b3 100%);
+    color: #222;
+  }
+  .genz-type-label {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    z-index: 2;
+    letter-spacing: 1.5px;
+    opacity: 0.85;
+  }
+  
+  .card-image-card {
+    width: 340px;
+    height: 210px;
+    border-radius: 20px;
+    box-shadow: 0 4px 32px rgba(0,0,0,0.10);
+    position: relative;
+    overflow: hidden;
+    background: none;
+    margin-bottom: 0;
+    display: flex;
+    align-items: stretch;
+    padding: 0;
+  }
+  .card-image-bg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0; left: 0;
+    z-index: 1;
+  }
+  .card.card-image-card {
+    transition: box-shadow 0.3s, transform 0.3s, border 0.3s;
+  }
+  .card.card-image-card:hover {
+    box-shadow: 0 12px 40px 0 rgba(80, 40, 180, 0.18), 0 2px 16px 0 rgba(0,0,0,0.10);
+    transform: scale(1.045) translateY(-6px);
+    border: 2px solid #a78bfa;
+    outline: none;
+    z-index: 3;
+    filter: drop-shadow(0 0 16px #a78bfa55);
+  }

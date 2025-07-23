@@ -118,6 +118,11 @@ export const Navbar = ({ wishlistCount = 0, onWishlistClick = () => {} }) => {
           #GRWM
           </Link>
         </li>
+        <li className={activeMenu === "genz" ? "active" : ""}>
+          <Link to="/genz" onClick={() => setShowMenu(false)} style={{color: 'red'}}>
+            #GENZCARD
+          </Link>
+        </li>
       </ul>
       <div className={`nav-login-cart ${showMenu ? "show" : ""}`}>
       <button className="nav-wishlist-btn" aria-label="Wishlist" onClick={onWishlistClick}>

@@ -17,7 +17,7 @@ import { GRWM } from "./Pages/GRWM";
 import all_product from "./Components/Assets/all_product";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
-
+import CardPage from "./Components/GenzCard/CardPage";
 // ScrollToTop component
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -92,6 +92,7 @@ function App() {
           <Route path="/cart" element={<Cart />} />
           <Route path="/login" element={<LoginSignUp />} />
           <Route path="/api" element={<MockAPI/>} />
+          <Route path="/genz" element={<CardPage />} />
         </Routes>
         <Footer />
       </BrowserRouter>
