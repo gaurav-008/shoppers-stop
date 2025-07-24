@@ -146,7 +146,7 @@ const CardPage = () => {
           alignItems: "stretch",
         }}
       >
-        <img
+        {/* <img
           src={process.env.PUBLIC_URL + "/images/grafittinew.png"}
           alt="Graffiti left"
           style={{
@@ -159,7 +159,7 @@ const CardPage = () => {
             zIndex: 2,
             alignSelf: "stretch",
           }}
-        />
+        /> */}
         <div className="card-columns-flex">
           {cards.map((card, idx) => {
             const details = CARD_DETAILS[card.type];
@@ -268,7 +268,7 @@ const CardPage = () => {
             );
           })}
         </div>
-        <img
+        {/* <img
           src={process.env.PUBLIC_URL + "/images/Genz.png"}
           alt="Genz right"
           style={{
@@ -281,7 +281,7 @@ const CardPage = () => {
             zIndex: 2,
             alignSelf: "stretch",
           }}
-        />
+        /> */}
       </div>
     
     </div>

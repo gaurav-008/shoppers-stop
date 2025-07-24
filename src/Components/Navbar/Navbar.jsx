@@ -119,7 +119,7 @@ export const Navbar = ({ wishlistCount = 0, onWishlistClick = () => {} }) => {
           </Link>
         </li>
         <li className={activeMenu === "genz" ? "active" : ""}>
-          <Link to="/genz" onClick={() => setShowMenu(false)} style={{color: 'red'}}>
+          <Link to="/genz" onClick={() => setShowMenu(false)} style={{color: '#144d2b'}}>
             #GENZCARD
           </Link>
         </li>
