@@ -110,15 +110,33 @@
   color: #888;
 }
 /* Animation for side switching */
-.zara-auth-image-side {
+.zara-auth-root.signup .zara-auth-image-side {
   transform: translateX(100%);
 }
- .zara-auth-form-side {
+.zara-auth-root.signup .zara-auth-form-side {
   transform: translateX(-100%);
 }
-.zara-auth-image-side,
-.zara-auth-form-side {
+.zara-auth-root.login .zara-auth-image-side,
+.zara-auth-root.login .zara-auth-form-side {
   transform: translateX(0);
+}
+@media (max-width: 768px) {
+  .zara-auth-root.signup .zara-auth-image-side {
+    transform: translateY(100%);
+  }
+  .zara-auth-root.signup .zara-auth-form-side {
+    transform: translateY(-100%);
+  }
+  .zara-auth-root.signup .zara-auth-image-side {
+    transform: translateY(100%);
+  }
+  .zara-auth-root.signup .zara-auth-form-side {
+    transform: translateY(-100%);
+  }
+  /* .zara-auth-root.login .zara-auth-image-side,
+  .zara-auth-root.login .zara-auth-form-side {
+    transform: translateY(0);
+  } */
 }
 /* .zara-auth-root.signup .zara-auth-image-side {
   transform: translateX(100%);
