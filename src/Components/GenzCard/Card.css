@@ -162,6 +162,11 @@
     align-items: stretch;
     padding: 0;
   }
+  @media (max-width: 768px) {
+    .card-image-card{
+   width: 90%;
+    }
+  }
   .card-image-bg {
     width: 100%;
     height: 100%;
