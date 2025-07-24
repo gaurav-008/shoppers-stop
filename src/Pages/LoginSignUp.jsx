@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import './CSS/LoginSignup.css';
 import { useNavigate } from "react-router-dom";
 
@@ -17,6 +17,14 @@ export const LoginSignUp = () => {
   const [signupPassword, setSignupPassword] = useState("");
   const [passwordFocused, setPasswordFocused] = useState(false);
   const navigate = useNavigate();
+
+  // Detect mobile view
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 600);
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 600);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   // Determine which video to show
   const showGlass = passwordFocused || (mode === "login" && loginPassword.length > 0) || (mode === "signup" && signupPassword.length > 0);
@@ -61,37 +69,65 @@ export const LoginSignUp = () => {
   return (
     <div className={`zara-auth-root ${mode}`}> 
       <div className="zara-auth-container">
-        <div className={`zara-auth-side zara-auth-image-side ${mode === 'signup' ? 'slide-right' : ''}`}> 
-          <video
-            src={videoSrc}
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="zara-auth-video"
-            style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: 0, minHeight: 340 }}
-          />
-        </div>
-        <div className={`zara-auth-side zara-auth-form-side ${mode === 'signup' ? 'slide-left' : ''}`}> 
-          {mode === "login" ? (
-            <form className="zara-auth-form" onSubmit={handleLogin}>
-              <h1>Login</h1>
-              <input type="email" placeholder="Email address" value={loginEmail} onChange={e => setLoginEmail(e.target.value)} required />
-              <input type="password" placeholder="Password" value={loginPassword} onChange={e => setLoginPassword(e.target.value)} required onFocus={handlePasswordFocus} onBlur={handlePasswordBlur} />
-              <button type="submit" disabled={loading}>{loading ? <span className="zara-auth-spinner"></span> : "Login"}</button>
-              <div className="zara-auth-switch">Don't have an account? <span onClick={() => setMode("signup")}>Sign Up</span></div>
-            </form>
-          ) : (
-            <form className="zara-auth-form" onSubmit={handleSignup}>
-              <h1>Sign Up</h1>
-              <input type="text" placeholder="Your name" value={signupName} onChange={e => setSignupName(e.target.value)} required />
-              <input type="email" placeholder="Email address" value={signupEmail} onChange={e => setSignupEmail(e.target.value)} required />
-              <input type="password" placeholder="Password" value={signupPassword} onChange={e => setSignupPassword(e.target.value)} required onFocus={handlePasswordFocus} onBlur={handlePasswordBlur} />
-              <button type="submit" disabled={loading}>{loading ? <span className="zara-auth-spinner"></span> : "Sign Up"}</button>
-              <div className="zara-auth-switch">Already have an account? <span onClick={() => setMode("login")}>Login</span></div>
-            </form>
-          )}
-        </div>
+        {isMobile && mode === "signup" ? (
+          <>
+            <div className={`zara-auth-side zara-auth-form-side slide-left`}>
+              <form className="zara-auth-form" onSubmit={handleSignup}>
+                <h1>Sign Up</h1>
+                <input type="text" placeholder="Your name" value={signupName} onChange={e => setSignupName(e.target.value)} required />
+                <input type="email" placeholder="Email address" value={signupEmail} onChange={e => setSignupEmail(e.target.value)} required />
+                <input type="password" placeholder="Password" value={signupPassword} onChange={e => setSignupPassword(e.target.value)} required onFocus={handlePasswordFocus} onBlur={handlePasswordBlur} />
+                <button type="submit" disabled={loading}>{loading ? <span className="zara-auth-spinner"></span> : "Sign Up"}</button>
+                <div className="zara-auth-switch">Already have an account? <span onClick={() => setMode("login")}>Login</span></div>
+              </form>
+            </div>
+            <div className={`zara-auth-side zara-auth-image-side slide-right`}>
+              <video
+                src={videoSrc}
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="zara-auth-video"
+                style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: 0, minHeight: 120, maxHeight: 180 }}
+              />
+            </div>
+          </>
+        ) : (
+          <>
+            <div className={`zara-auth-side zara-auth-image-side ${mode === 'signup' ? 'slide-right' : ''}`}> 
+              <video
+                src={videoSrc}
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="zara-auth-video"
+                style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: 0, minHeight: 340 }}
+              />
+            </div>
+            <div className={`zara-auth-side zara-auth-form-side ${mode === 'signup' ? 'slide-left' : ''}`}> 
+              {mode === "login" ? (
+                <form className="zara-auth-form" onSubmit={handleLogin}>
+                  <h1>Login</h1>
+                  <input type="email" placeholder="Email address" value={loginEmail} onChange={e => setLoginEmail(e.target.value)} required />
+                  <input type="password" placeholder="Password" value={loginPassword} onChange={e => setLoginPassword(e.target.value)} required onFocus={handlePasswordFocus} onBlur={handlePasswordBlur} />
+                  <button type="submit" disabled={loading}>{loading ? <span className="zara-auth-spinner"></span> : "Login"}</button>
+                  <div className="zara-auth-switch">Don't have an account? <span onClick={() => setMode("signup")}>Sign Up</span></div>
+                </form>
+              ) : (
+                <form className="zara-auth-form" onSubmit={handleSignup}>
+                  <h1>Sign Up</h1>
+                  <input type="text" placeholder="Your name" value={signupName} onChange={e => setSignupName(e.target.value)} required />
+                  <input type="email" placeholder="Email address" value={signupEmail} onChange={e => setSignupEmail(e.target.value)} required />
+                  <input type="password" placeholder="Password" value={signupPassword} onChange={e => setSignupPassword(e.target.value)} required onFocus={handlePasswordFocus} onBlur={handlePasswordBlur} />
+                  <button type="submit" disabled={loading}>{loading ? <span className="zara-auth-spinner"></span> : "Sign Up"}</button>
+                  <div className="zara-auth-switch">Already have an account? <span onClick={() => setMode("login")}>Login</span></div>
+                </form>
+              )}
+            </div>
+          </>
+        )}
         {toast && <div className="zara-auth-toast">{toast}</div>}
       </div>
     </div>

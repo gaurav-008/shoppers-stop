@@ -6,6 +6,7 @@ import cart_icon from "../Assets/cart_icon.png";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { ShopContext } from "../../Contexts/ShopContext";
 import { isUserLoggedIn } from "../../Pages/LoginSignUp"; // If you have a heart.svg, otherwise use inline SVG
+import ReactDOM from 'react-dom';
 
 export const Navbar = ({ wishlistCount = 0, onWishlistClick = () => {} }) => {
   const [showMenu, setShowMenu] = useState(false);
@@ -14,6 +15,24 @@ export const Navbar = ({ wishlistCount = 0, onWishlistClick = () => {} }) => {
   const [showProfile, setShowProfile] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
+
+  // Detect mobile view
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 700);
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 700);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Prevent background scroll when mobile profile sidebar is open
+  useEffect(() => {
+    if (showProfile && isMobile) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => { document.body.style.overflow = ''; };
+  }, [showProfile, isMobile]);
 
   // Helper to determine active menu
   const getActiveMenu = () => {
@@ -75,8 +94,29 @@ export const Navbar = ({ wishlistCount = 0, onWishlistClick = () => {} }) => {
     return () => document.removeEventListener('mousedown', handleClick);
   }, [showProfile]);
 
+  const navbarRef = useRef(null);
+
+  useEffect(() => {
+    if (!showMenu) return;
+    const handleClick = (e) => {
+      if (navbarRef.current && !navbarRef.current.contains(e.target)) {
+        setShowMenu(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClick);
+    document.addEventListener('touchstart', handleClick);
+    return () => {
+      document.removeEventListener('mousedown', handleClick);
+      document.removeEventListener('touchstart', handleClick);
+    };
+  }, [showMenu]);
+
   return (
-    <div className={`navbar fade-in${scrolled ? " navbar-scrolled" : ""} ${showMenu ? "responsive" : ""}`}>
+    <div
+      ref={navbarRef}
+      className={`navbar fade-in${scrolled ? " navbar-scrolled" : ""} ${showMenu ? "responsive" : ""}`}
+      onClick={() => { if (showMenu) setShowMenu(false); }}
+    >
       <Link style={{ textDecoration: "none" }} to="/">
         <div className="nav-logo">
         <img src="https://chicchaps.com/wp-content/uploads/2025/01/cropped-CHIC-CHAPS-2-242x300.png" alt="ChicChaps Logo" className="nav-logo-img" style={{height: 40, width: 'auto', objectFit: 'contain'}} loading="lazy" />
@@ -136,12 +176,28 @@ export const Navbar = ({ wishlistCount = 0, onWishlistClick = () => {} }) => {
               <path d="M6 26c0-4 4.477-7 10-7s10 3 10 7" stroke="#111" strokeWidth="2" fill="none"/>
             </svg>
             {showProfile && (
-              <div className="nav-profile-popup" ref={profileRef}>
-                <div className="nav-profile-title">Profile</div>
-                <div className="nav-profile-detail"><b>Email:</b> test@test.com</div>
-                <button className="nav-profile-orders" onClick={handleOrders}>My Orders</button>
-                <button className="nav-profile-logout" onClick={handleLogout}>Logout</button>
-              </div>
+              isMobile ? (
+                ReactDOM.createPortal(
+                  <>
+                    <div className="profile-sidebar-backdrop" onClick={() => setShowProfile(false)} />
+                    <div className="profile-sidebar" ref={profileRef}>
+                      <button className="profile-sidebar-close" onClick={() => setShowProfile(false)} aria-label="Close profile">&times;</button>
+                      <div className="nav-profile-title">Profile</div>
+                      <div className="nav-profile-detail"><b>Email:</b> test@test.com</div>
+                      <button className="nav-profile-orders" onClick={handleOrders}>My Orders</button>
+                      <button className="nav-profile-logout" onClick={handleLogout}>Logout</button>
+                    </div>
+                  </>,
+                  document.body
+                )
+              ) : (
+                <div className="nav-profile-popup" ref={profileRef}>
+                  <div className="nav-profile-title">Profile</div>
+                  <div className="nav-profile-detail"><b>Email:</b> test@test.com</div>
+                  <button className="nav-profile-orders" onClick={handleOrders}>My Orders</button>
+                  <button className="nav-profile-logout" onClick={handleLogout}>Logout</button>
+                </div>
+              )
             )}
           </div>
         ) : (

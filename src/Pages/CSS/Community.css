@@ -125,8 +125,4 @@
     min-height: 180px;
     padding: 16px 4px 12px 4px;
   }
-  .community-card img, .community-winner-card img {
-    width: 80px;
-    height: 80px;
-  }
 } 

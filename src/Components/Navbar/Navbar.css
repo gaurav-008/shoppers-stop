@@ -173,7 +173,7 @@
 .nav-profile-logout {
   
   color: black;
-  border: 1.5px solid #111;
+  border: none;
   font-size: 1rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -190,7 +190,7 @@
 
 .nav-profile-orders {
   color: #111;
-  border: 1.5px solid #ff2d55;
+  border: none;
   font-size: 1rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -304,7 +304,7 @@
   .nav-login-cart.show {
     display: flex;
     position: absolute;
-    top: 40vh;
+    top: 45vh;
     left: 0px;
     width: 100%;
     justify-content: space-around;
@@ -340,5 +340,52 @@
   .nav-menu {
     font-size: 0.95rem;
     gap: 10px;
+  }
+}
+
+@media (max-width: 700px) {
+  .profile-sidebar-backdrop {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    background: rgba(0,0,0,0.38);
+    z-index: 1001;
+    display: block;
+  }
+  .profile-sidebar {
+    position: fixed;
+    top: 0; right: 0;
+    width: 84vw;
+    max-width: 340px;
+    height: 100vh;
+    background: #fff;
+    z-index: 1002;
+    box-shadow: -4px 0 32px #0002;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 32px 18px 18px 18px;
+    animation: sidebar-slide-in 0.22s cubic-bezier(.4,0,.2,1);
+  }
+  @keyframes sidebar-slide-in {
+    0% { transform: translateX(100%); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
+  }
+  .profile-sidebar-close {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    background: none;
+    border: none;
+    font-size: 2.2rem;
+    color: #222;
+    cursor: pointer;
+    z-index: 10;
+  }
+  .nav-profile-title, .nav-profile-detail, .nav-profile-orders, .nav-profile-logout {
+    width: 100%;
+    text-align: left;
+  }
+  .nav-profile-popup {
+    display: none !important;
   }
 }
