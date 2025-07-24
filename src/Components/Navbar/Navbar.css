@@ -1,19 +1,22 @@
 /* Navbar.css */
 
 /* Add this media query for smaller screens */
+body {
+  padding-top: 84px; /* Adjust to match navbar height */
+}
 .navbar {
-  position: sticky;
+  position: fixed;
   top: 0;
-  z-index: 1000;
+  left: 0;
+  width: 100vw;
+  z-index: 1200;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 24px 48px 18px 48px;
   background: #fff;
-  /* background: linear-gradient(90deg, #181818 60%, #ff2d55 100%); */
   border-bottom: 6px solid #ffcf00;
   box-shadow: 0 6px 24px 0 rgba(0,0,0,0.18);
-
   margin: 0;
   transition: background 0.3s, box-shadow 0.3s;
   color: black;

@@ -328,9 +328,22 @@ export const GRWM = () => {
           </div>
         </div>
         {/* Video player right */}
-        <div style={{flex: 1, minWidth: 320, maxWidth: 700}}>
+        <div style={{flex: 1, minWidth: 320, maxWidth: 700, position: 'relative'}}>
           <div className="grwm-player-wrap">
-            <div className="grwm-player-aspect">
+            <div className="grwm-player-aspect" style={{position: 'relative'}}>
+              {videoLoading && (
+                <div style={{
+                  position: 'absolute',
+                  top: 0, left: 0, right: 0, bottom: 0,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  background: 'rgba(255,255,255,0.7)',
+                  zIndex: 2
+                }}>
+                  <div className="grwm-video-loader" style={{width: 48, height: 48, border: '4px solid #ff2d55', borderTop: '4px solid #fff', borderRadius: '50%', animation: 'grwm-spin 1s linear infinite'}}></div>
+                </div>
+              )}
               <iframe
                 key={selected.id}
                 src={getEmbedUrl(selected.url)}
@@ -339,6 +352,7 @@ export const GRWM = () => {
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
                 className="grwm-player"
+                onLoad={() => setVideoLoading(false)}
               ></iframe>
             </div>
           </div>
