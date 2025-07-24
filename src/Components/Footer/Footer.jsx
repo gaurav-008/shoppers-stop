@@ -56,6 +56,9 @@ export const Footer = () => {
           </div>
         </div>
       </div>
+      <div className="footer-copyright" style={{textAlign: 'center', fontSize: '1rem', color: '#888', marginTop: 18}}>
+        © 2025 Mridtech. All rights reserved.
+      </div>
       <div className="footer-vogue-bottom">
         <div className="footer-vogue-legal-links">
           <span>USER AGREEMENT</span>
@@ -70,7 +73,6 @@ export const Footer = () => {
           <span>|</span>
           <span>VISUAL STORIES</span>
         </div>
-        <div className="footer-vogue-country">CHICCHAPS &copy; {new Date().getFullYear()} | India</div>
       </div>
     </footer>
   );
